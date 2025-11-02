@@ -1,28 +1,22 @@
 <?php
 
 $host = "localhost";
-$dbname = "";
+$dbname = "db_agenda";
 $user = "root";
 $pass = "";
-$charset = 'utf8mb4';
+$charset = "utf8mb4";
 
-$dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
-
-$options = [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES => false
-];
-
+// Conexão no database através do PDO.
 try {
-    // Tentar conexão com database.
-    $pdo = new PDO($dsn, $user, $pass, $options);
+    $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=$charset", $user, $pass);
 
-    echo "Conexão realizada com sucesso.";
-} catch (PDOException $e) { // Armazenando o erro em uma variável.
-    // Apresentando o erro caso haja falha.
-    echo "Falha na conexão: " . $e->getMessage();
-};
+    // Ativando modo de erros.
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $exception) {
+    $erro = $exception->getMessage();
+    echo "Erro na conexação: $erro"; // Mensagem de erro.
+}
+
 
 /*
  PDO::ATTR_ERRMODE - Caso não seja possível armazenar o dado sou avisado pelo sistema.

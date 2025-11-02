@@ -1,8 +1,8 @@
 <?php
 include_once("../config/url.php");
-include_once("../config/conexao.php");
+include_once("../config/process.php");
 
-// Mensagem de sucesso/insucesso ao realizar ações com o database.
+// Validação do sucesso do cadastro para o usuário antes de direciona-lo para home.
 if (isset($_SESSION['msg'])) {
     $printMsg = $_SESSION['msg'];
     $_SESSION['msg'] = '';
