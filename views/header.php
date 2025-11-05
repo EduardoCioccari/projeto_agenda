@@ -1,6 +1,6 @@
 <?php
 include_once("../config/url.php");
-include_once("../config/process.php");
+include_once("../controllers/process.php");
 
 // Validação do sucesso do cadastro para o usuário antes de direciona-lo para home.
 if (isset($_SESSION['msg'])) {
